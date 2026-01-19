@@ -7,7 +7,7 @@ export const personalDetails = {
   "email": "hansidileesha206@gmail.com",
   "phone": "+94 775650717",
   "address": "Ratnapura,Sabaragamuwa Province,Sri Lanka",
-  "photo_url": "/uploads/1768648123955.jpeg",
+  "photo_url": "/uploads/profile_new.png",
   "linkedin": "https://www.linkedin.com/in/hansi-dileesha-65b1aa255/",
   "github": "https://github.com/hansi2000-dilee",
   "facebook": "https://www.facebook.com/profile.php?id=100071022406204",
