@@ -1,16 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import axios from 'axios';
+import { personalDetails } from '../data';
 import { Award, Code, Users, Coffee } from 'lucide-react';
 import './About.css';
 
 const About = () => {
-  const [details, setDetails] = useState({});
-
-  useEffect(() => {
-    axios.get('http://localhost:5000/api/personal_details')
-      .then(res => setDetails(res.data))
-      .catch(err => console.error(err));
-  }, []);
+  const details = personalDetails;
 
   const stats = [
     { icon: <Award size={32} />, value: details.years_experience || "02+", label: "Years Experience" },

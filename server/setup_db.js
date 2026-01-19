@@ -13,7 +13,7 @@ const dbConfig = {
 const connection = mysql.createConnection(dbConfig);
 
 const schema = fs.readFileSync(path.join(__dirname, 'schema.sql'), 'utf8');
-
+panel
 connection.connect((err) => {
     if (err) {
         console.error('Error connecting: ' + err.stack);

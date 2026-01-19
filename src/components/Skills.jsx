@@ -1,17 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import { Code2, Database, Layout, Settings } from 'lucide-react';
-import axios from 'axios';
+import { skills } from '../data';
 import './Skills.css';
 
 const Skills = () => {
-  const [skills, setSkills] = useState([]);
-
-  useEffect(() => {
-    axios.get('http://localhost:5000/api/skills')
-      .then(res => setSkills(res.data))
-      .catch(err => console.error(err));
-  }, []);
 
   // Group skills by category
   const groupedSkills = skills.reduce((acc, skill) => {

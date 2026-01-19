@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Layers } from 'lucide-react';
-import axios from 'axios';
+import { projects } from '../data';
 import './Projects.css';
 
 const ProjectCard = ({ project, index }) => {
@@ -87,7 +87,7 @@ const ProjectCard = ({ project, index }) => {
                 <AnimatePresence initial={false} custom={direction} mode="popLayout">
                     <motion.img 
                         key={currentImageIndex}
-                        src={`http://localhost:5000${images[currentImageIndex]}`} 
+                        src={images[currentImageIndex]} 
                         custom={direction}
                         variants={variants}
                         initial="enter"
@@ -216,25 +216,7 @@ const ProjectCard = ({ project, index }) => {
 };
 
 const Projects = () => {
-  const [projects, setProjects] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
 
-  useEffect(() => {
-    axios.get('http://localhost:5000/api/projects')
-      .then(res => {
-          setProjects(res.data);
-          setLoading(false);
-      })
-      .catch(err => {
-          console.error(err);
-          setError('Failed to load projects');
-          setLoading(false);
-      });
-  }, []);
-
-  if (loading) return <div style={{textAlign:'center', padding:'50px', color:'white'}}>Loading projects...</div>;
-  if (error) return <div style={{textAlign:'center', padding:'50px', color:'red'}}>{error}</div>;
 
   return (
     <section id="projects" className="section container">

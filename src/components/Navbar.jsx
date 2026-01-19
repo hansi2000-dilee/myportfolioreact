@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
+import { personalDetails } from '../data';
 import './Navbar.css';
 
 const Navbar = () => {
@@ -8,17 +9,9 @@ const Navbar = () => {
   const [cvUrl, setCvUrl] = useState('');
   
   useEffect(() => {
-    // Fetch personal details to get CV URL
-    const fetchCv = async () => {
-        try {
-            const res = await fetch('http://localhost:5000/api/personal_details');
-            const data = await res.json();
-            if (data.cv_url) {
-                setCvUrl(`http://localhost:5000${data.cv_url}`);
-            }
-        } catch (e) { console.error(e); }
-    };
-    fetchCv();
+    if (personalDetails.cv_url) {
+      setCvUrl(personalDetails.cv_url);
+    }
   }, []);
 
   useEffect(() => {

@@ -1,17 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import { Calendar } from 'lucide-react';
-import axios from 'axios';
+import { experiences } from '../data';
 import './Experience.css';
 
 const Experience = () => {
-  const [experiences, setExperiences] = useState([]);
-
-  useEffect(() => {
-    axios.get('http://localhost:5000/api/experience')
-      .then(res => setExperiences(res.data))
-      .catch(err => console.error(err));
-  }, []);
 
   return (
     <section id="experience" className="section container">

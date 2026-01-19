@@ -1,21 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import { Mail, MapPin, Phone, Linkedin, Github, Facebook, MessageCircle, Send } from 'lucide-react';
-import axios from 'axios';
+import { personalDetails } from '../data';
 import './Contact.css';
 
 const Contact = () => {
-    const [details, setDetails] = useState(null);
+    const details = personalDetails;
     const [formData, setFormData] = useState({
         name: '', title: '', email: '', phone: '', address: '', message: ''
     });
     const [status, setStatus] = useState('');
-
-    useEffect(() => {
-        axios.get('http://localhost:5000/api/personal_details')
-            .then(res => setDetails(res.data))
-            .catch(err => console.error(err));
-    }, []);
 
     const handleChange = (e) => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -23,15 +17,12 @@ const Contact = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        try {
-            setStatus('Sending...');
-            await axios.post('http://localhost:5000/api/contact', formData);
-            setStatus('Message Sent! I will get back to you soon.');
-            setFormData({ name: '', title: '', email: '', phone: '', address: '', message: '' });
-        } catch (err) {
-            console.error(err);
-            setStatus('Failed to send message.');
-        }
+        setStatus('Sending...');
+        // Simulate sending
+        setTimeout(() => {
+             setStatus('Message Sent! (Simulation: Backend removed)');
+             setFormData({ name: '', title: '', email: '', phone: '', address: '', message: '' });
+        }, 1000);
     };
 
   return (

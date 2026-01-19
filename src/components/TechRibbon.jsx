@@ -1,15 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import axios from 'axios';
+import { skills } from '../data';
 import './TechRibbon.css';
 
 const TechRibbon = () => {
-  const [skills, setSkills] = useState([]);
-
-  useEffect(() => {
-    axios.get('http://localhost:5000/api/skills')
-      .then(res => setSkills(res.data))
-      .catch(err => console.error(err));
-  }, []);
 
   // Filter skills to only include Programming, Frameworks, and Databases
   const filteredSkills = skills.filter(skill => {
@@ -42,7 +35,7 @@ const TechRibbon = () => {
               <div className="tech-icon-wrapper">
                   {skill.icon_url ? (
                       <img 
-                          src={`http://localhost:5000${skill.icon_url}`} 
+                          src={skill.icon_url} 
                           alt={skill.skill_name} 
                           className="tech-icon"
                       />

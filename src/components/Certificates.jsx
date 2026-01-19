@@ -1,27 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import { certificates, achievements } from '../data';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Award, Calendar, ChevronRight, ExternalLink } from 'lucide-react';
 import './Projects.css'; // Reusing project styles for consistency
 
 const Certificates = () => {
-    const [certificates, setCertificates] = useState([]);
-    const [achievements, setAchievements] = useState([]);
-
-    useEffect(() => {
-        axios.get('http://localhost:5000/api/certificates')
-            .then(res => {
-                const sorted = res.data.sort((a, b) => b.display_order - a.display_order);
-                setCertificates(sorted);
-            })
-            .catch(err => console.error(err));
-
-        axios.get('http://localhost:5000/api/achievements')
-            .then(res => {
-                setAchievements(res.data);
-            })
-            .catch(err => console.error(err));
-    }, []);
 
     // Helper for Achievement Image Slider
     const AchievementCard = ({ ach }) => {
@@ -54,7 +37,7 @@ const Certificates = () => {
                         <AnimatePresence mode='wait'>
                             <motion.img 
                                 key={imgIndex}
-                                src={`http://localhost:5000${ach.images[imgIndex].image_url}`} 
+                                src={ach.images[imgIndex].image_url} 
                                 alt={ach.title} 
                                 initial={{ opacity: 0, x: 20 }}
                                 animate={{ opacity: 1, x: 0 }}
@@ -204,7 +187,7 @@ const Certificates = () => {
                                 >
                                     {cert.image_url ? (
                                         <img 
-                                            src={`http://localhost:5000${cert.image_url}`} 
+                                            src={cert.image_url} 
                                             alt={cert.title} 
                                             style={{ 
                                                 width: '100%', 

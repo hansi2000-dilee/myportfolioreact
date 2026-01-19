@@ -1,22 +1,16 @@
 import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import { ArrowRight, ChevronDown } from 'lucide-react';
-import axios from 'axios';
+import { personalDetails } from '../data';
 import './Hero.css';
 
 const Hero = () => {
-  const [data, setData] = useState(null);
-
-  useEffect(() => {
-    axios.get('http://localhost:5000/api/personal_details')
-      .then(res => setData(res.data))
-      .catch(err => console.error(err));
-  }, []);
+  const data = personalDetails;
 
 // ... imports remain the same
 
   // Use full URL for image if it exists, else fallback
-  const heroImage = data?.photo_url ? `http://localhost:5000${data.photo_url}` : null;
+  const heroImage = data?.photo_url || null;
   const firstName = data?.name ? data.name.split(' ')[0] : 'Hansi';
   const lastName = data?.name ? data.name.split(' ')[1] : 'Dileesha';
 
