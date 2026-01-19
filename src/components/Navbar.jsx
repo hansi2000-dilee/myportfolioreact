@@ -45,7 +45,7 @@ const Navbar = () => {
       <nav className={`navbar ${scrolled ? 'scrolled' : ''}`}>
         <div className="nav-container">
           <a href="#" className="logo">
-            HD<span>.</span>
+            <img src="/logo.png" alt="HD" style={{ height: '45px', objectFit: 'contain' }} />
           </a>
 
           <div className="nav-links">
