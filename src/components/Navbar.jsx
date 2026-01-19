@@ -6,13 +6,7 @@ import './Navbar.css';
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const [cvUrl, setCvUrl] = useState('');
-  
-  useEffect(() => {
-    if (personalDetails.cv_url) {
-      setCvUrl(personalDetails.cv_url);
-    }
-  }, []);
+  const cvUrl = personalDetails.cv_url || '';
 
   useEffect(() => {
     const handleScroll = () => {
@@ -45,7 +39,7 @@ const Navbar = () => {
       <nav className={`navbar ${scrolled ? 'scrolled' : ''}`}>
         <div className="nav-container">
           <a href="#" className="logo">
-            <img src="/logo.png" alt="HD" style={{ height: '45px', objectFit: 'contain' }} />
+            <img src="/logo.png" alt="HD" style={{ height: '65px', objectFit: 'contain' }} />
           </a>
 
           <div className="nav-links">
